@@ -29,7 +29,7 @@ def dump_elasticsearch_data():
       es_data = ES_CLIENT.search(index="fly", doc_type="users", body=query)
       details_web = details_web + es_data['hits']['hits']
       page += 100000
-    with open('/Users/chitrankdixit/PycharmProjects/flyrobe-data-science/project/app/mix_panel_data_details_web_'+str(page)+'.json', 'wt') as outfile:
+    with open('/home/ubuntu/user_mixpanel_data/mix_panel_data_details_web.json', 'wt') as outfile:
         json.dump(details_web, outfile)
 
 dump_elasticsearch_data()
