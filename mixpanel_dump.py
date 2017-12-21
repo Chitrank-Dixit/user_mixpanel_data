@@ -17,7 +17,7 @@ ES_CLIENT = Elasticsearch(
 def dump_elasticsearch_data():
     page = 1000000
     details_web = []
-    for i in range(1, 4):
+    for i in range(1, 2):
       query = {
         "size": 1000000,
         "from": 1 * page,
