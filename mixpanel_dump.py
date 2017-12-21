@@ -1,10 +1,10 @@
 import json
 import time
 from config import settings
-ES_HOST = "http://35.154.96.13:9200/"
+#ES_HOST = "http://35.154.96.13:9200/"
 
 
-#ES_HOST = "http://127.0.0.1:9200/"
+ES_HOST = "http://127.0.0.1:9200/"
 
 ES_CLIENT = Elasticsearch(
     [ES_HOST],
