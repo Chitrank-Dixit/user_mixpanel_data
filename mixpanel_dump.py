@@ -17,7 +17,7 @@ ES_CLIENT = Elasticsearch(
 def dump_elasticsearch_data():
     page = 100000
     details_web = []
-    for i in range(1, 2):
+    for i in range(1, 120):
       query = {
         "size": 100000,
         "from": 1 * page,
@@ -30,6 +30,7 @@ def dump_elasticsearch_data():
       es_data = ES_CLIENT.search(index="fly", doc_type="users", body=query)
       details_web = details_web + es_data['hits']['hits']
       page += 100000
+      time.sleep(3)
     with open('/home/ubuntu/user_mixpanel_data/mix_panel_data_details_web.json', 'wt') as outfile:
         json.dump(details_web, outfile)
 
