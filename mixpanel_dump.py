@@ -15,23 +15,19 @@ ES_CLIENT = Elasticsearch(
 
 
 def dump_elasticsearch_data():
-    page = 1
+    page = 2500000
     details_web = []
-    for i in range(1, 26):
-      query = {
-        "size": 100000,
-        "from": 1 * page,
-        "query": {
-          "match": {
-            "event": "Details Web"
-          }
+    query = {
+      "size": 100000,
+      "from": 1 * page,
+      "query": {
+        "match": {
+          "event": "Details Web"
         }
       }
-      es_data = ES_CLIENT.search(index="fly", doc_type="users", body=query)
-      details_web = details_web + es_data['hits']['hits']
-      page += 100000
-      if i == 1:
-        page = page - 1
+    }
+    es_data = ES_CLIENT.search(index="fly", doc_type="users", body=query)
+    details_web = details_web + es_data['hits']['hits']
       #time.sleep(3)
     with open('/home/ubuntu/user_mixpanel_data/mix_panel_data_details_web'+str(page)+'.json', 'wt') as outfile:
         json.dump(details_web, outfile)
